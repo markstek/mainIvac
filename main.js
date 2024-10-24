@@ -384,12 +384,12 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
         //$scope.loader();
         var validationStep = $scope.validateStepTwo();
         if(!validationStep){
-            $scope.showAlert('danger', 'Error!', 'Please complete info step!');
+           
             $scope.loading = false;
-            return;
+            
         }
 
-        var validation = $scope.paymentValidation(pay);
+        var validation = true//$scope.paymentValidation(pay);
 
         if(validation){
             var data = $.param({
