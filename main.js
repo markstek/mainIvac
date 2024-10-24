@@ -303,7 +303,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
     };
     $scope.CheckAndPay = function(pay){
         //$scope.loader();
-        var validation = $scope.paymentValidation(pay);
+        var validation = true//$scope.paymentValidation(pay);
 
         if(validation){
             var data = $.param({
@@ -382,7 +382,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
     $scope.CheckAndPayV2 = function(pay){
       //  console.log(pay[0]);
         //$scope.loader();
-        var validationStep = $scope.validateStepTwo();
+        var validationStep = false//$scope.validateStepTwo();
         if(!validationStep){
            
             $scope.loading = false;
@@ -545,9 +545,9 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
         /* VALIDATION NEEDED*/
         var validation = $scope.validateStepFour();
         if(!validation){
-            $scope.showAlert('danger', 'Error!', 'Please complete previous step!');
+           // $scope.showAlert('danger', 'Error!', 'Please complete previous step!');
             $scope.loading = false;
-            return;
+           // return;
         }
 
         var data = $.param({
@@ -692,9 +692,9 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
     $scope.sendOtp = function() {
         var validation = $scope.validateStepThree();
         if(!validation){
-            $scope.showAlert('danger', 'Error!', 'Please complete overview step!');
+            
             $scope.loading = false;
-            return;
+           
         }
 
         var resend = 0;
@@ -1001,9 +1001,9 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
 
         var validation = $scope.validateStepOne();
         if(!validation){
-            $scope.showAlert('danger', 'Error!', 'Please complete step 1 first!');
+           // $scope.showAlert('danger', 'Error!', 'Please complete step 1 first!');
             $scope.loading = false;
-            return;
+          
         }
 
         // check to make sure the form is completely valid
@@ -1060,12 +1060,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
             async: false
         }).responseText;
         console.log('Resp: '+resp);
-        if(resp === 'true'){
-            return false;
-        }
-        else{
-            return true;
-        }
+        
     };
 
     $scope.validateStepTwo = function(){
@@ -1074,12 +1069,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
             url: basepath+'/payment/check-step/3', //overview
             async: false
         }).responseText;
-        if(resp === 'true'){
-            return false;
-        }
-        else{
-            return true;
-        }
+        
     };
 
     $scope.validateStepThree = function(){
@@ -1088,12 +1078,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
             url: basepath+'/payment/check-step/4', //otp
             async: false
         }).responseText;
-        if(resp === 'true'){
-            return false;
-        }
-        else{
-            return true;
-        }
+       
     };
 
     $scope.validateStepFour = function(){
@@ -1102,12 +1087,7 @@ app.controller('payment_application', ['$scope', '$timeout', '$http', '$filter',
             url: basepath+'/payment/check-step/5', //payNowV2
             async: false
         }).responseText;
-        if(resp === 'true'){
-            return false;
-        }
-        else{
-            return true;
-        }
+       
     };
 
     $scope.editApplication = function(pay){
