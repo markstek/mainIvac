@@ -26,7 +26,7 @@
  function waitForAngularApp(){
   if(typeof window.angular === 'undefined'){
           console.error('No AngularJS is available');
-          return;
+     
      }
 
       const observer = new MutationObserver((mutations) => {
